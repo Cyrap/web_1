@@ -9,7 +9,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 60vh;
+            height: fit-content;
+            min-height: 80vh;
             width: 100vw;
             font-size: 20px;
             background: linear-gradient(#FF3437,#FF7A63);
@@ -41,6 +42,11 @@
         .page button:hover{
             box-shadow: rgba(255, 255, 255, 0.892) 0px 3px 8px;
         }
+        @media (max-width:500px){
+            .page h3{
+                font-size: 4rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -51,17 +57,19 @@
                 (Hypertext Markup Language) нь вэб хуудас үүсгэх, дизайн хийхэд хэрэглэгддэг стандарт хэл юм. Энэ нь вэб хуудасны бүтэц, агуулгыг тодорхойлох элементүүдээс бүрдэнэ. 
             </p>
             <br>
-            <button>let's get started</button>
+            <a href="dashboard.php"><button>let's get started</button></a>
          </div>
     </div>
     <div class="page css" id="css">
         <div>
             <h3>CSS</h3>
             <p>
-            CSS нь "Cascading Style Sheets" гэсэн үгийн товчлол юм. CSS нь вэб хуудсуудыг (HTML эсвэл XML) байрлуулах, зохион байгуулахад зориулагдсан компьютерийн хэл юм. Энэ хэл нь кодчиллын элементүүдийг агуулсан бөгөөд CSS файлууд (. css) гэж нэрлэгддэг эдгээр "каскадын загварын хуудас"-аас бүрддэг.
+            CSS нь "Cascading Style Sheets" гэсэн үгийн товчлол юм. CSS нь вэб хуудсуудыг (HTML эсвэл XML) байрлуулах, зохион байгуулахад зориулагдсан компьютерийн хэл юм. Энэ хэл нь кодчиллын элементүүдийг агуулсан бөгөөд CSS файлууд (. css) гэж нэрлэгддэг.
             </p>
             <br>
-            <button>let's get started</button>
+            <a href="content.php">
+                <button>let's get started</button>
+            </a>
          </div>
     </div>
     <div class="page js" id="js">
@@ -71,7 +79,9 @@
             JavaScript бол динамикаар шинэчлэгдэж буй контент үүсгэх, мультимедиа, хөдөлгөөнт дүрс болон бусад бараг бүх зүйлийг удирдах боломжийг олгодог скрипт хэл юм.
             </p> 
             <br>
-            <button>let's get started</button>
+            <a href="content.php">
+                <button>let's get started</button>
+            </a>
          </div>
     </div>
 </body>

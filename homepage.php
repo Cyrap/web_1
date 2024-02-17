@@ -45,6 +45,10 @@
     height: 100%;
     object-fit: contain;
 }
+.img-c img:hover{
+    transform: scale(1.1);
+    transition: 0.2s ease-in-out;
+}
 @media (max-width:1500px){
     .home-container>div{
         flex-direction: column;

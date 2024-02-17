@@ -53,6 +53,9 @@
     .nav-btn{
         padding:5px;
     }
+    a i{
+        color: var(--primary-color);
+    }
    }
     </style>
 </head>
@@ -62,12 +65,9 @@
     <div class="nav-parent">
     <img src="img/logov2.png" class="logo" alt="">
     <div class="btn-c">
-    <button class="nav-btn">HTML</button>
-    <button class="nav-btn">CSS</button>
-    <button class="nav-btn">JS</button>
     <?php include "screen-mode-switch.php"; ?>
     </div>
-    <button class="nav-btn"><a href="login.php">login</a></button>
+    <a class="nav-btn" href="login.php"><i class="fa-solid fa-right-to-bracket"></i></a>
     </div>
    </div>
 </nav>
