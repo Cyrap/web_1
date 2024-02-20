@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("ss", $username, $password);
         if ($stmt->execute()) {
             echo "Registration successful!";
-            header("Location: index.php");
+            header("Location: login.php");
         } else {
             echo "Error registering user.";
         }

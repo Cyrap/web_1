@@ -38,6 +38,7 @@
         }
         .item:hover{
             cursor: pointer;
+            background :rgba(0,0,0,0.2);
         }
         .content{
             height: fit-content;
@@ -148,18 +149,11 @@
         };
         xhr.send();
     }
-
-
-
     var container = document.getElementById("container");
     var content =document.querySelector(".content");
     var contentContainer = document.querySelector(".content-container");
 
-
-
-
     function displayData(data) {
-
         window.addEventListener("scroll", function() {
             data.forEach(function(item) {
                 var contentHeader = document.getElementById(item.id);
@@ -167,14 +161,13 @@
                 var contentBottom = contentHeader.offsetTop + contentHeader.offsetHeight;
                 if (window.scrollY >= contentTop && window.scrollY < contentBottom) {
                     var sidebarItem = document.querySelector(".item[href='#" + item.id + "']");
-                    sidebarItem.style.backgroundColor = "lightblue";
+                    sidebarItem.style.backgroundColor = "rgba(0,0,0,0.3)";
                 } else {
                     var sidebarItem = document.querySelector(".item[href='#" + item.id + "']");
                     sidebarItem.style.backgroundColor = "";
                 }
             });
         });
-
     for (var i = 0; i < data.length; i++) {
         var div = document.createElement("a");
         var contentWrap = document.createElement("div");
@@ -189,13 +182,11 @@
         contentHeader.textContent = data[i].content_type;
         contentContainer.classList.add("content-container");
         contentHeader.classList.add("content-header");
-
         contentWrap.classList.add("contentWrapper");
         contentWrap.appendChild(contentHeader);
         contentWrap.appendChild(singleContent);
         container.appendChild(div);
         content.appendChild(contentWrap);
-        // console.log("ID: " + data[i].id + ", Content Type: " + data[i].content_type,data[i].content);
     }
 }
     fetchData();

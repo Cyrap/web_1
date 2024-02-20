@@ -4,7 +4,7 @@ if ($conn->connect_error) {
     die("Connection Failed: " . $conn->connect_error);
 }
 
-$stmt = $conn->prepare("SELECT id, content_type, content FROM html"); 
+$stmt = $conn->prepare("SELECT id, content_type, content,post_user,language_name FROM html"); 
 $stmt->execute();
 $result = $stmt->get_result();
 

@@ -1,33 +1,3 @@
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $conn = new mysqli('localhost', 'root', '', 'web1');
-    if ($conn->connect_error) {
-        die("Connection Failed: " . $conn->connect_error);
-    }
-
-    $stmt = $conn->prepare("SELECT * FROM users WHERE user_name = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
-
-    if ($row) {
-        if (password_verify($password, $row['user_password'])) {
-            header("Location: index.php");
-            exit();
-        } else {
-            echo "<script>alert('Нууц үг буруу байна')</script>";
-        }
-    } else {
-        echo "<script>alert('Хэрэглэгч олдсонгүй')</script>";
-    }
-
-    $stmt->close();
-    $conn->close();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,17 +5,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Нэвтрэх</title>
     <link rel="stylesheet" href="styles/signUp.css">
+    <script>
+    function saveToLocalStorage() {
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "login-fetch.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                if (response.success) {
+                    localStorage.setItem('username', username);
+                    window.location.href = "index.php";
+                } else {
+                    alert(response.error);
+                }
+            }
+        };
+        xhr.send("username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password));
+    }
+</script>
+
 </head>
 <body>
 <div class="parent">
-<form method="post" action="login.php" class="container">
-    <h2>Нэвтрэх</h2>
-    <input type="text" id="username" placeholder="Нэвтрэх нэр" name="username" required><br><br>
-    <input type="password" id="password" placeholder="Нууц үг" name="password" required><br><br>
-    <input class="submit-btn" type="submit" value="Нэвтрэх">
-    <a href="signUp.php">Бүртгүүлэх</a>
-</form>    
-
+    <form onsubmit="saveToLocalStorage(); return false;" class="container">
+        <h2>Нэвтрэх</h2>
+        <input type="text" id="username" placeholder="Нэвтрэх нэр" name="username" required><br><br>
+        <input type="password" id="password" placeholder="Нууц үг" name="password" required><br><br>
+        <input class="submit-btn" type="submit" value="Нэвтрэх">
+        <a href="signUp.php">Бүртгүүлэх</a>
+    </form>    
 </div>  
 </body>
 </html>

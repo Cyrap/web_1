@@ -57,7 +57,7 @@
                 (Hypertext Markup Language) нь вэб хуудас үүсгэх, дизайн хийхэд хэрэглэгддэг стандарт хэл юм. Энэ нь вэб хуудасны бүтэц, агуулгыг тодорхойлох элементүүдээс бүрдэнэ. 
             </p>
             <br>
-            <a href="dashboard.php"><button>let's get started</button></a>
+            <a href="dashboard.php"><button>Цааш үзэх</button></a>
          </div>
     </div>
     <div class="page css" id="css">
@@ -68,7 +68,7 @@
             </p>
             <br>
             <a href="content.php">
-                <button>let's get started</button>
+                <button>Цааш үзэх</button>
             </a>
          </div>
     </div>
@@ -80,7 +80,7 @@
             </p> 
             <br>
             <a href="content.php">
-                <button>let's get started</button>
+                <button>Цааш үзэх</button>
             </a>
          </div>
     </div>
