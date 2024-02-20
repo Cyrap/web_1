@@ -25,7 +25,7 @@
 }
 .introText{
   color: orange;
-  height: 50vh;
+  height: 100px;
   display: grid;
   place-items: center;
   font-size: 2rem;

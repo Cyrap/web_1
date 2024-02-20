@@ -11,5 +11,6 @@ body {
 
 .dark-mode{
     background: var(---dark-background-color);
+    background:  rgb(46, 47, 48);;
     color: var(--text-color);
 }

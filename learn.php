@@ -10,7 +10,7 @@
             align-items: center;
             justify-content: center;
             height: fit-content;
-            min-height: 80vh;
+            min-height: 90vh;
             width: 100vw;
             font-size: 20px;
             background: linear-gradient(#FF3437,#FF7A63);

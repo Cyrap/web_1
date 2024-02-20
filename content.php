@@ -7,7 +7,6 @@
     </head>
     <body>
         <p>
-            this page is in development process.
             <?php include("dashboard.php"); ?>
         </p> 
     </body>

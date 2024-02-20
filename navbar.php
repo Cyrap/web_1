@@ -14,7 +14,7 @@
        display: flex;
        justify-content: center;
        align-items: center;
-       padding: 10px;
+       background: rgba(255, 167, 4, 0.9);
    }
    .nav-parent{
        display: flex;
@@ -53,8 +53,8 @@
     .nav-btn{
         padding:5px;
     }
-    a i{
-        color: var(--primary-color);
+    .fa-right-to-bracket{
+        color: rgb(0, 128, 220);
     }
    }
     </style>
@@ -63,13 +63,18 @@
 <nav>
    <div class="nav-container">
     <div class="nav-parent">
-    <img src="img/logov2.png" class="logo" alt="">
+        <a href="index.php">
+            <img src="img/logov2.png" class="logo" alt="">
+        </a>
     <div class="btn-c">
-    <?php include "screen-mode-switch.php"; ?>
+            <?php include "screen-mode-switch.php"; ?>
     </div>
     <a class="nav-btn" href="login.php"><i class="fa-solid fa-right-to-bracket"></i></a>
     </div>
    </div>
+   <script>
+
+   </script>
 </nav>
 </body>
 </html>
