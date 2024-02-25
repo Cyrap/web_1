@@ -38,9 +38,25 @@
 <script>
     const icon = document.getElementById('icon');
     const modeSwitch = document.getElementById('modeSwitch');
-
     function toggleDarkMode() {
+        const inputs = document.querySelectorAll("input");
+        const anchors =document.querySelectorAll("a");
+        const icons = document.querySelectorAll("i");
+        const textAreas =document.querySelectorAll("textarea");
+        textAreas.forEach((textArea)=>{
+            textArea.classList.toggle("dark-mode");
+        })
+        icons.forEach(icon =>{
+            icon.classList.toggle(".anchor-mode");
+        })
+        anchors.forEach(anchor =>{
+            anchor.classList.toggle(".anchor-mode");
+        })
+        inputs.forEach(input => {
+            input.classList.toggle("dark-mode");
+        });
         document.body.classList.toggle("dark-mode");
+
         localStorage.setItem('web1-screen-mode', modeSwitch.checked ? 'dark-mode' : 'light-mode');
         if (modeSwitch.checked) {
             icon.classList.remove("fa-moon");

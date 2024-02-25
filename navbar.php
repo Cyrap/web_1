@@ -46,15 +46,15 @@
     display: flex;
     flex-direction: row;
    }
+   .nav-btn i{
+    color: white !important;
+   }
    @media (max-width:500px){
     .nav-parent{
         width:100%;
     }
     .nav-btn{
         padding:5px;
-    }
-    .fa-right-to-bracket{
-        color: rgb(0, 128, 220);
     }
    }
    .logout{
@@ -79,6 +79,7 @@
    </div>
    <script>
     function Logout(){
+        window.location.href = "dashboard.php"
         localStorage.removeItem("username");
         window.location.reload();
     }

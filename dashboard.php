@@ -102,7 +102,11 @@
     <div class="content-section">
         <div class="parent">
             <h3 class="header">HTML TOPICS</h3>
-            <div id= "container" class="container"></div>
+            <div id= "html-container" class="container"></div>
+            <h3 class="header">CSS TOPICS</h3>
+            <div id= "css-container" class="container"></div>
+            <h3 class="header">JS TOPICS</h3>
+            <div id= "js-container" class="container"></div>
         </div>
         <div class="content-container">
             <div class="content">
@@ -149,35 +153,68 @@
         };
         xhr.send();
     }
-    var container = document.getElementById("container");
-    var content =document.querySelector(".content");
-    var contentContainer = document.querySelector(".content-container");
+var htmlContainer = document.getElementById("html-container");
+var CssContainer = document.getElementById("css-container");
+var JsContainer = document.getElementById("js-container");
+var content = document.querySelector(".content");
+var contentContainer = document.querySelector(".content-container");
 
-    function displayData(data) {
-        window.addEventListener("scroll", function() {
-            data.forEach(function(item) {
-                var contentHeader = document.getElementById(item.id);
-                var contentTop = contentHeader.offsetTop;
-                var contentBottom = contentHeader.offsetTop + contentHeader.offsetHeight;
-                if (window.scrollY >= contentTop && window.scrollY < contentBottom) {
-                    var sidebarItem = document.querySelector(".item[href='#" + item.id + "']");
-                    sidebarItem.style.backgroundColor = "rgba(0,0,0,0.3)";
-                } else {
-                    var sidebarItem = document.querySelector(".item[href='#" + item.id + "']");
-                    sidebarItem.style.backgroundColor = "";
-                }
-            });
+function fetchData() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "fetch_data.php", true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var data = JSON.parse(xhr.responseText);
+            displayData(data);
+            console.log(data);
+        } else {
+            console.log("data not found")
+        }
+    };
+    xhr.send();
+}
+
+function displayData(data) {
+    window.addEventListener("scroll", function () {
+        data.forEach(function (item) {
+            var sidebarItem = document.querySelector(".item[href='#" + item.id + "']");
+            if (!sidebarItem) return;
+            var contentHeader = document.getElementById(item.id);
+            var contentTop = contentHeader.offsetTop;
+            var contentBottom = contentHeader.offsetTop + contentHeader.offsetHeight;
+            if (window.scrollY >= contentTop && window.scrollY < contentBottom) {
+                sidebarItem.style.backgroundColor = "rgba(0,0,0,0.3)";
+            } else {
+                sidebarItem.style.backgroundColor = "";
+            }
         });
+    });
+
     for (var i = 0; i < data.length; i++) {
-        var div = document.createElement("a");
+        var html = document.createElement("a");
+        var css = document.createElement("a");
+        var js = document.createElement("a");
         var contentWrap = document.createElement("div");
         var contentHeader = document.createElement("div");
         var singleContent = document.createElement("div");
-        contentWrap.id =data[i].id;
-        div.href = "#"+data[i].id;
-        div.textContent = data[i].content_type;
+        html.classList.add("item");
+        css.classList.add("item");
+        js.classList.add("item");
+        contentWrap.id = data[i].id;
+        html.href = "#" + data[i].id;
+        css.href = "#" + data[i].id;
+        js.href = "#" + data[i].id;
+        if (data[i].language_name == "html") {
+            html.textContent = data[i].content_type;
+            htmlContainer.appendChild(html);
+        } else if (data[i].language_name === "CSS") {
+            css.textContent = data[i].content_type;
+            CssContainer.appendChild(css);
+        } else if (data[i].language_name == "Javascript") {
+            js.textContent = data[i].content_type;
+            JsContainer.appendChild(js);
+        }
         singleContent.classList.add("single-content");
-        div.classList.add("item");
         singleContent.textContent = data[i].content;
         contentHeader.textContent = data[i].content_type;
         contentContainer.classList.add("content-container");
@@ -185,11 +222,11 @@
         contentWrap.classList.add("contentWrapper");
         contentWrap.appendChild(contentHeader);
         contentWrap.appendChild(singleContent);
-        container.appendChild(div);
         content.appendChild(contentWrap);
     }
 }
-    fetchData();
+fetchData();
+
 </script>
 </body>
 </html>
