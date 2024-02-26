@@ -16,10 +16,6 @@ a{
     background:  var(---dark-background-color);
     color: var(--text-color);
 }
-body.dark-mode input {
-        background-color: #555;
-        color: var(--text-color);
-}
 .anchor-mode{
     color: var(--text-color);
 }
